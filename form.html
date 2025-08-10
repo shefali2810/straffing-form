@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Candidate Application Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="profile-header">
+  <div class="cover-container">
+    <img src="straffing_com_cover.jpeg" alt="Cover Image" class="cover-image">
+  </div>
+  <div class="profile-info">
+    <div class="logo-wrapper">
+      <img src="straffing_com_logo.jpeg" alt="Company Logo" class="logo-image">
+    </div>
+    <div class="company-details">
+      <h2>Straffing AI</h2>
+      <p>#StraffingAI</p>
+    </div>
+  </div>
+</header>
+
+<div class="form-container">
+  <h2>Candidate Application Form</h2>
+  
+  <form>
+    <h3>Personal Information</h3>
+    <label>Email *</label>
+    <input type="email" required>
+
+    <label>Full Name *</label>
+    <input type="text" required>
+
+    <label>Personal Email ID *</label>
+    <input type="email" required>
+
+    <label>Mobile Number *</label>
+    <input type="tel" pattern="[0-9]{10}" required>
+
+    <label>Age (in years) *</label>
+    <input type="number" required>
+
+    <label>Highest Educational Qualification *</label>
+    <input type="text" required>
+
+    <label>Current City / Location *</label>
+    <input type="text" required>
+
+    <h3>Preferred Work Territory</h3>
+    <label>Preferred State *</label>
+    <select id="state" required>
+      <option value="">--Select State--</option>
+      <option value="Andhra Pradesh">Andhra Pradesh</option>
+      <option value="Maharashtra">Maharashtra</option>
+      <option value="Karnataka">Karnataka</option>
+      <option value="Tamil Nadu">Tamil Nadu</option>
+    </select>
+
+    <label>Preferred District *</label>
+    <select id="district" required>
+      <option value="">--Select District--</option>
+    </select>
+
+    <h3>Work Experience</h3>
+    <label>Total Years of Field-Sales Experience *</label>
+    <input type="number" required>
+
+    <label>Relevant Experience (Years in Steel / Building Materials) *</label>
+    <input type="number" required>
+
+    <label>Current Job Title *</label>
+    <input type="text" required>
+
+    <label>Current Employer *</label>
+    <input type="text" required>
+
+    <label>Dealer / Distributor Network Size *</label>
+    <input type="number" required>
+
+    <h3>Language Skills</h3>
+    <label>Fluency in Languages *</label>
+    <textarea placeholder="E.g. English – Fluent, Hindi – Conversational, Tamil – Basic" required></textarea>
+
+    <button type="submit">Submit Application</button>
+  </form>
+</div>
+
+<script>
+  const stateDistrictMap = {
+    "Andhra Pradesh": ["Srikakulam", "West Godavari", "Guntur", "NTR (Vijayawada)", "Kurnool", "Tirupati", "Anantapur"],
+    "Maharashtra": ["Pune", "Nagpur", "Mumbai", "Jalgaon", "Kolhapur", "Solapur", "Amravati"],
+    "Karnataka": ["Bengaluru", "Mangaluru", "Yadgir"],
+    "Tamil Nadu": ["Chennai", "Vellore", "Kanchipuram", "Thanjavur", "Krishnagiri", "Ranipet", "Thiruvarur"]
+  };
+
+  document.getElementById("state").addEventListener("change", function() {
+    const districtSelect = document.getElementById("district");
+    districtSelect.innerHTML = '<option value="">--Select District--</option>';
+    const districts = stateDistrictMap[this.value];
+    if (districts) {
+      districts.forEach(d => {
+        const opt = document.createElement("option");
+        opt.value = d;
+        opt.text = d;
+        districtSelect.appendChild(opt);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
